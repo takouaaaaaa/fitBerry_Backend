@@ -1,40 +1,43 @@
-package com.iset.entity;
+package com.iset.DTO;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.PrimaryKeyJoinColumn;
-import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-@Entity
-@Table(name = "clients")
-@PrimaryKeyJoinColumn(name = "user_id")
-public class Client extends User {
-    
-    @Column(name = "age")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class ClientProfileDTO {
+    private Long id;
+    private String email;
     private Integer age;
-    
-    @Column(name = "sexe", length = 10)
     private String sexe;
-    
-    @Column(name = "poids")
     private Double poids;
-    
-    @Column(name = "taille")
     private Double taille;
-    
-    @Column(name = "objectifs", length = 500)
     private String objectifs;
-    
-    @Column(name = "allergies", length = 500)
     private String allergies;
-    
-    @Column(name = "maladies_chroniques", length = 500)
     private String maladiesChroniques;
-    
-    @Column(name = "niveau_activite", length = 50)
     private String niveauActivite;
+    private Double imc; // Calculé automatiquement
+    private String categorieImc; // Calculé automatiquement
+    private boolean profilComplet; // True si tous les champs obligatoires sont remplis
 
-    // Getters and Setters
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public Integer getAge() {
         return age;
     }
@@ -98,5 +101,28 @@ public class Client extends User {
     public void setNiveauActivite(String niveauActivite) {
         this.niveauActivite = niveauActivite;
     }
-}
 
+    public Double getImc() {
+        return imc;
+    }
+
+    public void setImc(Double imc) {
+        this.imc = imc;
+    }
+
+    public String getCategorieImc() {
+        return categorieImc;
+    }
+
+    public void setCategorieImc(String categorieImc) {
+        this.categorieImc = categorieImc;
+    }
+
+    public boolean isProfilComplet() {
+        return profilComplet;
+    }
+
+    public void setProfilComplet(boolean profilComplet) {
+        this.profilComplet = profilComplet;
+    }
+}

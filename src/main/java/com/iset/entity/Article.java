@@ -43,5 +43,55 @@ public class Article {
     
     @OneToMany(mappedBy = "article", cascade = CascadeType.ALL)
     private Set<Commentaire> commentaires = new HashSet<>();
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getTitre() {
+		return titre;
+	}
+
+	public void setTitre(String titre) {
+		this.titre = titre;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public String getImageURL() {
+		return imageURL;
+	}
+
+	public void setImageURL(String imageURL) {
+		this.imageURL = imageURL;
+	}
+
+	public User getAuteur() {
+		return auteur;
+	}
+
+	public void setAuteur(User auteur) {
+		this.auteur = auteur;
+	}
+
+	public Set<Commentaire> getCommentaires() {
+		return commentaires;
+	}
+
+	public void setCommentaires(Set<Commentaire> commentaires) {
+		this.commentaires = commentaires;
+	}
+    
+    
     
 }

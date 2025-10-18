@@ -1,40 +1,40 @@
-package com.iset.entity;
+package com.iset.DTO;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.PrimaryKeyJoinColumn;
-import jakarta.persistence.Table;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-@Entity
-@Table(name = "clients")
-@PrimaryKeyJoinColumn(name = "user_id")
-public class Client extends User {
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class UpdateClientProfileRequest {
     
-    @Column(name = "age")
+    @NotNull(message = "L'âge est obligatoire")
+    @Min(value = 1, message = "L'âge doit être supérieur à 0")
     private Integer age;
     
-    @Column(name = "sexe", length = 10)
-    private String sexe;
+    @NotBlank(message = "Le sexe est obligatoire")
+    private String sexe; // "Homme" ou "Femme"
     
-    @Column(name = "poids")
-    private Double poids;
+    @NotNull(message = "Le poids est obligatoire")
+    @Min(value = 1, message = "Le poids doit être supérieur à 0")
+    private Double poids; // en kg
     
-    @Column(name = "taille")
-    private Double taille;
+    @NotNull(message = "La taille est obligatoire")
+    @Min(value = 1, message = "La taille doit être supérieure à 0")
+    private Double taille; // en cm
     
-    @Column(name = "objectifs", length = 500)
-    private String objectifs;
+    private String objectifs; // Objectifs nutritionnels (optionnel)
     
-    @Column(name = "allergies", length = 500)
-    private String allergies;
+    private String allergies; // Allergies alimentaires (optionnel)
     
-    @Column(name = "maladies_chroniques", length = 500)
-    private String maladiesChroniques;
+    private String maladiesChroniques; // Maladies chroniques (optionnel)
     
-    @Column(name = "niveau_activite", length = 50)
-    private String niveauActivite;
+    private String niveauActivite; // Sédentaire, Modéré, Actif, Très actif (optionnel)
 
-    // Getters and Setters
     public Integer getAge() {
         return age;
     }
@@ -99,4 +99,3 @@ public class Client extends User {
         this.niveauActivite = niveauActivite;
     }
 }
-
